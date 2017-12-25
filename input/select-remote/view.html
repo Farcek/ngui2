@@ -1,0 +1,35 @@
+<label class="label">{{label}}</label>
+<div class="field has-addons">
+    <div class="control is-expanded" [class.has-icons-left]="icon">
+        <div class="select is-fullwidth">
+            <div class="input" (click)="toggleDetail()" [class.is-success]="control.valid" [class.is-danger]="control.invalid">
+                {{value?.label || placeholder}}
+            </div>
+            <nav class="panel detail" *ngIf="isOpen">
+                <div class="detail-items">
+                    <div class="panel-block">
+                        <div class="control has-icons-left">
+                            <input class="input is-small " type="text" placeholder="Search" [(ngModel)]="search">
+                            <span class="icon is-small is-left"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                    <a class="panel-block" *ngFor="let it of items" (click)="setValue(it)" [class.is-active]="it.value == value?.value">
+                        <span class="panel-icon"><i class="fa" [class.fa-circle]="it.value == value?.value"></i></span> {{it.label}}
+                    </a>
+                </div>
+            </nav>
+            <span class="icon is-small is-left" *ngIf="icon"><i class="fa fa-{{icon}}"></i></span>
+        </div>
+    </div>
+    <div class="control">
+        <button class="button is-outlined " (click)="clear()" [class.is-success]="control.valid" [class.is-danger]="control.invalid" type="button"> 
+            <span class="icon is-small"><i class="fa fa-times" aria-hidden="true"></i> </span>
+        </button>
+    </div>
+</div>
+
+<div class="help" [class.is-danger]="control.invalid" [hidden]="control.valid">
+    <ng-content select="[input-validation]"></ng-content>
+</div>
+<ng-content></ng-content>
+{{_errorMessage}}

@@ -1,0 +1,15 @@
+<div class="field">
+    <label class="label">{{label}}</label>
+    <div class="control has-icons-right" [class.has-icons-left]="icon">
+        <input class="input" type="number" placeholder="{{placeholder}}" (blur)="onTouched()" [(ngModel)]="value" [attr.disabled]="isDisabled?'':null" [class.is-success]="control.valid" [class.is-danger]="control.invalid">
+        <span class="icon is-small is-left" *ngIf="icon"><i class="fa fa-{{icon}}"></i></span>
+        <div class="icon is-small is-right">
+            <i class="fa fa-check has-text-success" *ngIf="control.valid"></i>
+            <i class="fa fa-warning has-text-danger" *ngIf="control.invalid"></i>
+        </div>
+    </div>
+    <div class="help" [class.is-danger]="control.invalid" [hidden]="control.valid">
+        <ng-content select="[input-validation]"></ng-content>
+    </div>
+    <ng-content></ng-content>
+</div>

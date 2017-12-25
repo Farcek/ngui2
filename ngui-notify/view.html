@@ -1,0 +1,6 @@
+<div class="notification" *ngFor="let it of messages;" (mouseenter)="pause(it.__id__)" (mouseleave)="resume(it.__id__)" [class.is-dark]="it.type==1" [class.is-primary]="it.type==2" [class.is-info]="it.type==3" [class.is-success]="it.type==4" [class.is-warning]="it.type==5"
+    [class.is-danger]="it.type==6">
+    <button class="delete" (click)="remove(it.__id__)"></button>
+    <b *ngIf="it.title">{{it.title}}</b>
+    <div [innerHTML]="it.message"></div>
+</div>

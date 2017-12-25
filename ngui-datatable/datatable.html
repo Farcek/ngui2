@@ -1,0 +1,17 @@
+<div class="columns">
+    <div class="column">
+        <h1 class="title">{{title}}</h1>
+    </div>
+    <div class="column">
+        <div class="field has-addons has-addons-right">
+            <div class="control">
+                <input #query class="input" type="text" name="query" placeholder="Хайх" [ngModel]="filterQuery">
+            </div>
+            <div class="control">
+                <button class="button" (click)="setFilter(query.value)"> <i class="fa fa-search"></i> </button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-content></ng-content>
+<div ngui="paging" [paging-total]="paging.total" [paging-page]="paging.page" [paging-limit]="paging.limit" [paging-max]="paging.max" (paging-on-change-page)="pagingPage($event)"></div>

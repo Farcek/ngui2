@@ -1,0 +1,12 @@
+<div class="modal is-active" *ngFor="let it of items">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <section class="modal-card-body">
+            {{it.message}}
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" (click)="yes(it.id)">Yes</button>
+            <button class="button" (click)="no(it.id)">No</button>
+        </footer>
+    </div>
+</div>

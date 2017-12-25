@@ -1,0 +1,10 @@
+<div class="field">
+    <label class="label">{{label}}</label>
+    <div class="control">
+        <textarea class="textarea" type="text" placeholder="{{placeholder}}" (blur)="onTouched()" [(ngModel)]="value" [attr.disabled]="isDisabled?'':null" [class.is-success]="control.valid" [class.is-danger]="control.invalid" [attr.row]="row"></textarea>
+    </div>
+    <div class="help" [class.is-danger]="control.invalid" [hidden]="control.valid">
+        <ng-content select="[input-validation]"></ng-content>
+    </div>
+    <ng-content></ng-content>
+</div>

@@ -1,0 +1,11 @@
+<div class="field">
+    <label class="label">{{label}} </label>
+    <div class="control" [class.has-icons-left]="icon">
+        <input class="input" type="datetime-local" placeholder="{{placeholder}}" (blur)="onTouched()" [ngModel]="value | date:'yyyy-MM-ddTHH:mm'" (ngModelChange)="setValue($event)" [attr.disabled]="isDisabled?'':null" [class.is-success]="control.valid" [class.is-danger]="control.invalid">
+        <span class="icon is-small is-left" *ngIf="icon"><i class="fa fa-{{icon}}"></i></span>
+    </div>
+    <div class="help" [class.is-danger]="control.invalid" [hidden]="control.valid">
+        <ng-content select="[input-validation]"></ng-content>
+    </div>
+    <ng-content></ng-content>
+</div>

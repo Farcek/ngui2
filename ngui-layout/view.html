@@ -1,0 +1,20 @@
+<div class="navbar has-shadow">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-burger" style="display: block; margin-left: 0" (click)="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+            <ng-content select="[ngui-layout=navs]"></ng-content>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <ng-content select="[ngui-layout=tools]"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <ng-content select="[ngui-layout=body]"></ng-content>
+</div>

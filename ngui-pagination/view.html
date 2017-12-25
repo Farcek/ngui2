@@ -1,0 +1,22 @@
+<nav class="pagination">
+    <a class="pagination-previous" [attr.disabled]="hasPrev ? null : ''" (click)="prev()"> &laquo; </a>
+    <a class="pagination-next" [attr.disabled]="hasNext ? null: '' " (click)="next()">&raquo;</a>
+    <ul class="pagination-list">
+        <li *ngIf="hasFirst">
+            <a class="pagination-link" (click)="setPage(1)">1</a>
+        </li>
+        <li *ngIf="hasFirstRange">
+            <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        <li *ngFor="let it of pages">
+            <a type="button" class="pagination-link" [class.is-current]="it == page" (click)="setPage(it)">{{it}}</a>
+        </li>
+
+        <li *ngIf="hasLastRange">
+            <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        <li *ngIf="hasLast">
+            <a class="pagination-link" (click)="setPage(totalPage)">{{totalPage}}</a>
+        </li>
+    </ul>
+</nav>
