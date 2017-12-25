@@ -10,7 +10,7 @@ import { InputSelectComponent } from './select/component'
 import { InputSelectRemoteComponent } from './select-remote/component'
 import { InputDatetimeComponent } from './datetime/component'
 
-// 55 test
+
 @NgModule({
     imports: [
         CommonModule, FormsModule
