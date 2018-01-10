@@ -2,8 +2,8 @@ import { Component, Directive, Input, Output, OnInit, OnChanges, OnDestroy, Even
 
 
 import {
-    NgModel, ControlValueAccessor, FormControl,
-    NG_VALUE_ACCESSOR, NG_VALIDATORS, NG_ASYNC_VALIDATORS
+    NgModel, ControlValueAccessor, NgForm,
+    NG_VALUE_ACCESSOR, 
 } from '@angular/forms';
 
 
@@ -58,6 +58,13 @@ export class InputSelectComponent implements ControlValueAccessor {
 
     get control() : NgModel {
         return this._control || <any>{}
+    }
+
+    constructor(private parantForm: NgForm){
+        
+    }
+    get hasState() {
+        return this.parantForm && this.parantForm.submitted || this._control && this._control.touched || false;
     }
 
     onChange = (_: any) => { };

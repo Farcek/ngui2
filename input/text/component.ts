@@ -2,8 +2,8 @@ import { Component, Directive, Input, Output, OnInit, OnChanges, OnDestroy, Even
 
 
 import {
-    NgModel, ControlValueAccessor, FormControl,
-    NG_VALUE_ACCESSOR, NG_VALIDATORS, NG_ASYNC_VALIDATORS
+    NgModel, ControlValueAccessor, NgForm,
+    NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 
 
@@ -20,9 +20,9 @@ export class InputTextComponent implements ControlValueAccessor {
     @Input() public placeholder: string;
     @Input('disabled') public isDisabled: boolean;
 
-    @ContentChild(NgModel) _control: NgModel;
+    @ContentChild(NgModel) _control: NgModel = <any>{};
 
-    get control() : NgModel {
+    get control(): NgModel {
         return this._control || <any>{}
     }
 
@@ -42,10 +42,15 @@ export class InputTextComponent implements ControlValueAccessor {
     }
 
     constructor(
-
+        private parantForm: NgForm
     ) {
 
     }
+
+    get hasState() {
+        return this.parantForm && this.parantForm.submitted || this._control && this._control.touched || false;
+    }
+
     writeValue(v: string): void {
         this.value = v;
     }

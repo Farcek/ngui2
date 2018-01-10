@@ -1,9 +1,9 @@
-import { Component, Directive, Input, Output, OnInit, OnChanges, OnDestroy, EventEmitter, ElementRef, HostBinding, ContentChild, ViewChild, Optional, Inject, forwardRef } from '@angular/core';
+import { Component, Directive, Input, Output, OnInit, OnChanges, OnDestroy, EventEmitter, ElementRef, HostBinding, ContentChild, ViewChild, Optional, Inject, forwardRef, Attribute } from '@angular/core';
 
 
 import {
-    NgModel, ControlValueAccessor, FormControl,
-    NG_VALUE_ACCESSOR, NG_VALIDATORS, NG_ASYNC_VALIDATORS
+    NgModel, ControlValueAccessor, NgForm,
+    NG_VALUE_ACCESSOR
 } from '@angular/forms';
 
 
@@ -16,13 +16,25 @@ import {
 })
 export class InputStringComponent implements ControlValueAccessor {
     @Input() public icon: string;
+
     @Input() public label: string;
     @Input() public placeholder: string;
     @Input('disabled') public isDisabled: boolean;
 
-    @ContentChild(NgModel) _control: NgModel;
+    private _required = false
+    @Input()
+    set required(value: any) {        
+        this._required = (value != 'false' || value !== false);
+    }
+
+    get required() {
+        return this._required;
+    }
     
-    get control() : NgModel {
+
+    @ContentChild(NgModel) _control: NgModel;
+
+    get control(): NgModel {
         return this._control || <any>{}
     }
 
@@ -41,13 +53,15 @@ export class InputStringComponent implements ControlValueAccessor {
         }
     }
     constructor(
-
+        private parantForm: NgForm
     ) {
-    
+
     }
-    
 
 
+    get hasState() {
+        return this.parantForm && this.parantForm.submitted || this._control && this._control.touched || false;
+    }
 
 
 

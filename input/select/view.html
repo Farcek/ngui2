@@ -2,7 +2,7 @@
 <div class="field has-addons">
 
     <div class="control is-expanded" [class.has-icons-left]="icon">
-        <div class="select is-fullwidth" [class.is-success]="control.valid" [class.is-danger]="control.invalid">
+        <div class="select is-fullwidth" [class.is-success]="hasState && control.valid" [class.is-danger]="hasState && control.invalid">
             <select (blur)="onTouched()" [(ngModel)]="value" [attr.disabled]="isDisabled?'':null">
                 <option value=""  disabled selected hidden> {{placeholder}} </option>
                 <option *ngFor="let it of items" [ngValue]="it.value">{{it.label}}</option>                
