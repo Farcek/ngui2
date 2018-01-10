@@ -1,0 +1,24 @@
+<!-- <div class="modal" >
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head" *ngIf="title">
+            <p class="modal-card-title">{{title}}</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <ng-content></ng-content>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button" >Cancel</button>
+        </footer>
+    </div>
+</div> -->
+
+<div class="modal is-active" *ngIf="controller.isOpen">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <ng-content></ng-content>
+    </div>
+    <button class="modal-close is-large" aria-label="close" (click)="controller.close()"></button>
+</div>
