@@ -1,0 +1,25 @@
+<div class="field">
+
+
+    <div class="file has-name is-fullwidth" [class.is-success]="hasState && valid" [class.is-danger]="hasState && invalid">
+        <label class="file-label">
+          <input class="file-input" type="file" (blur)="onblur(); test()"  #file (change)="upload(file.files)" [attr.disabled]="isDisabled?'':null"  >
+          <span class="file-cta" style="border-bottom-left-radius: 0">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+                {{label}} <span *ngIf="required" class="is-primary">*</span>
+            </span>
+          </span>
+          <span class="file-name" style="border-bottom-right-radius:0">
+            {{value}}
+          </span>
+        </label>
+    </div>
+    <progress class="progress" [class.is-success]="hasState && valid" [class.is-danger]="hasState && invalid" value="{{uploadProcess}}" max="100" style="height: 1px; border-top-left-radius: 0; border-top-right-radius: 0; margin-bottom: 0;">{{uploadProcess}}%</progress>
+    <div class="help" [class.is-danger]="invalid" [hidden]="valid">
+        <ng-content select="[input-validation]"></ng-content>
+    </div>
+    <ng-content></ng-content>
+</div>

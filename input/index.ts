@@ -9,6 +9,7 @@ import { InputNumberComponent } from './number/component'
 import { InputSelectComponent } from './select/component'
 import { InputSelectRemoteComponent } from './select-remote/component'
 import { InputDatetimeComponent } from './datetime/component'
+import { InputFileComponent } from './file/component'
 
 
 @NgModule({
@@ -16,11 +17,11 @@ import { InputDatetimeComponent } from './datetime/component'
         CommonModule, FormsModule
     ],
     declarations: [
-        InputStringComponent, InputPasswordComponent,
+        InputStringComponent, InputPasswordComponent, InputFileComponent,
         InputSelectComponent, InputTextComponent, InputNumberComponent, InputSelectRemoteComponent, InputDatetimeComponent
     ],
     exports: [
-        InputStringComponent, InputPasswordComponent,
+        InputStringComponent, InputPasswordComponent, InputFileComponent,
         InputSelectComponent, InputTextComponent, InputNumberComponent, InputSelectRemoteComponent, InputDatetimeComponent
     ],
     providers: []
